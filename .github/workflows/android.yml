@@ -21,6 +21,17 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew && ls
+      run: chmod +x gradlew && ls && git clone https://huggingface.co/spaces/Duswishdb/Xc/
+    
+    - name: move directory
+      run: mv xc/app/src/main/assets app/src/main/
+    
+    - name: list
+      run: ls app/src/main && du -sh app/src/main 
+   
     - name: Build with Gradle
       run: ./gradlew build
+      
+    - name: build the apk 
+      run: ./gradlew assembleDebug
+     
