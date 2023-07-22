@@ -54,7 +54,7 @@ jobs:
       
 
     - name: Check built apk 
-      run: ls app/build/outputs/ && du -sh app/build/*
+      run: ls app/build/outputs/ && ls app/build/outputs/apk/* && du -sh app/build/outputs/apk/*
     - name: Upload APK Debug - ${{ env.repository_name }}
 
       uses: actions/upload-artifact@v3
