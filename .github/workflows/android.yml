@@ -24,7 +24,7 @@ jobs:
       run: chmod +x gradlew && ls && git clone https://huggingface.co/spaces/Duswishdb/Xc/
     
     - name: move directory
-      run: mv xc/app/src/main/assets app/src/main/
+      run: ls && mv Xc/app/src/main/assets app/src/main/
     
     - name: list
       run: ls app/src/main && du -sh app/src/main 
