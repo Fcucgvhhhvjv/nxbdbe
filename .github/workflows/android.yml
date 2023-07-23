@@ -1,44 +1,73 @@
 name: Android CI
 
 on:
+
   push:
+
     branches: [ "master" ]
+
   pull_request:
+
     branches: [ "master" ]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v3
+
     - name: set up JDK 11
+
       uses: actions/setup-java@v3
+
       with:
+
         java-version: '11'
+
         distribution: 'temurin'
+
         cache: gradle
 
     - name: Grant execute permission for gradlew
+
       run: chmod +x gradlew && ls && git clone https://huggingface.co/spaces/Duswishdb/Xc/
+
     
+
     - name: move directory
+
       run: ls && mv Xc/app/src/main/assets app/src/main/
+
     
+
     - name: list
+
       run: ls app/src/main && du -sh app/src/main 
+
       
+
     - name: Delete existing model 
-      run: rm app/src/main/assets/model/unet/* && du  -sh app/src/main/assets/model/unet/
+
+      run: rm app/src/main/assets/model/unet/* && du -sh app/src/main/assets/model/unet/
+
       
+
     - name: Download model 
+
       run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16onnxquantizedsd_in_ort/cyberrealistic/model.with_runtime_opt.ort
+
       
+
     - name: check Downloaded model
+
       run: ls app/src/main/assets/model/unet/*
 
       
+
     - name: Set current date as env variable
 
       run: echo "date_today=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
@@ -50,13 +79,21 @@ jobs:
       run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
 
       
+
    
+
     - name: Build with Gradle
+
       run: ./gradlew build
+
       
+
     - name: build the apk 
+
       run: ./gradlew assembleDebug
+
      
+
 #    - name: Build apk release project (APK) - ${{ env.main_project_module }} module
 
 #      run: ./gradlew assemble
@@ -64,7 +101,9 @@ jobs:
       
 
     - name: Check built apk 
+
       run: ls app/build/outputs/ && ls app/build/outputs/apk/* && du -sh app/build/outputs/apk/*
+
     - name: Upload APK Debug - ${{ env.repository_name }}
 
       uses: actions/upload-artifact@v3
@@ -75,15 +114,15 @@ jobs:
 
           path: app/build/outputs/apk/debug/
 
-    - name: Upload APK Release - ${{ env.repository_name }}
+  #  - name: Upload APK Release - ${{ env.repository_name }}
 
-      uses: actions/upload-artifact@v3
+   #  uses: actions/upload-artifact@v3
 
-      with:
+  #    with:
 
-          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
+  #        name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
 
-          path: app/build/outputs/apk/release/
+  #        path: app/build/outputs/apk/release/
 
 #    - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
 
@@ -94,4 +133,6 @@ jobs:
 #          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
 
 #          path: ${{ env.main_project_module }}/build/outputs/bundle/release/
+
      
+
