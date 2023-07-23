@@ -33,7 +33,7 @@ jobs:
       run: rm app/src/main/assets/model/unet/* && du  -sh app/src/main/assets/model/unet/
       
     - name: Download model 
-      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16onnxquantizedsd_in_ort/cyberrealistic/model.ort
+      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/spaces/Androidonnxfork/test/resolve/main/fp16onnxsdquantized_in_ort/Beautifulra_v6/model.ort
       
     - name: check Downloaded model
       run: ls app/src/main/assets/model/unet/*
