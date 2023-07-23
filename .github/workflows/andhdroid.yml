@@ -33,7 +33,7 @@ jobs:
       run: rm app/src/main/assets/model/unet/* && du  -sh app/src/main/assets/model/unet/
       
     - name: Download model 
-      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16onnxquantizedsd_in_ort/cyberrealistic/model.with_runtime_opt.ort
+      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16onnxquantizedsd_in_ort/cyberrealistic/model.ort
       
     - name: check Downloaded model
       run: ls app/src/main/assets/model/unet/*
@@ -75,15 +75,15 @@ jobs:
 
           path: app/build/outputs/apk/debug/
 
-    - name: Upload APK Release - ${{ env.repository_name }}
+#    - name: Upload APK Release - ${{ env.repository_name }}
 
-      uses: actions/upload-artifact@v3
+#      uses: actions/upload-artifact@v3
 
-      with:
+#      with:
 
-          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
+#          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
 
-          path: app/build/outputs/apk/release/
+#          path: app/build/outputs/apk/release/
 
 #    - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
 
