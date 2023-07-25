@@ -31,8 +31,8 @@ import ai.onnxruntime.providers.NNAPIFlags;
 public class UNet {
     public static final String TAG = "UNet";
     private final String model = "unet/model.ort";
-    public static int WIDTH = 384;
-    public static int HEIGHT = 384;
+    public static int WIDTH = 320;
+    public static int HEIGHT = 320;
     private final Random random = new Random();
     private final Context context;
 
