@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android-DPMSd-Majicmixv6-ONNX</string>
+    <string name="app_name">Android-Sd-Majicmixv6-ONNX</string>
     <string-array name="Resolution">
         <item>192</item>
         <item>256</item>
