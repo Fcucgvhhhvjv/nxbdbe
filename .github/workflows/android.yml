@@ -21,7 +21,7 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew && ls && git clone https://huggingface.co/spaces/Duswishdb/Xc/
+      run: chmod +x gradlew && ls && git clone https://huggingface.co/spaces/Androidonnxfork/Xc
     
     - name: move directory
       run: ls && mv Xc/app/src/main/assets app/src/main/
@@ -29,14 +29,14 @@ jobs:
     - name: list
       run: ls app/src/main && du -sh app/src/main 
       
-    - name: Delete existing model 
-      run: rm app/src/main/assets/model/unet/* && du  -sh app/src/main/assets/model/unet/
+  #  - name: Delete existing model 
+  #    run: rm app/src/main/assets/model/unet/* && du  -sh app/src/main/assets/model/unet/
       
-    - name: Download model 
-      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/spaces/Androidonnxfork/test/resolve/main/fp16onnxsdquantized_in_ort/realastic-vision-v20/model.ort
+  #  - name: Download model 
+  #    run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/spaces/Androidonnxfork/test/resolve/main/fp16onnxsdquantized_in_ort/realastic-vision-v20/model.ort
       
-    - name: check Downloaded model
-      run: ls app/src/main/assets/model/unet/*
+  #  - name: check Downloaded model
+  #    run: ls app/src/main/assets/model/unet/*
 
       
     - name: Set current date as env variable
